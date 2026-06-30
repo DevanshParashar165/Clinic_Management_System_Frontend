@@ -1,0 +1,70 @@
+.auth-fade {
+  animation: authFade 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(40px);
+  opacity: 0.5;
+  animation: floatBlob 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.blob-one {
+  top: 6%;
+  left: 8%;
+  height: 180px;
+  width: 180px;
+  background: rgba(216, 180, 254, 0.45);
+}
+
+.blob-two {
+  right: 8%;
+  top: 20%;
+  height: 220px;
+  width: 220px;
+  background: rgba(244, 114, 182, 0.28);
+  animation-duration: 10s;
+}
+
+.blob-three {
+  left: 35%;
+  bottom: 8%;
+  height: 140px;
+  width: 140px;
+  background: rgba(167, 139, 250, 0.3);
+  animation-duration: 9s;
+}
+
+@keyframes authFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floatBlob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(20px, -18px, 0) scale(1.05);
+  }
+}
+
+@media (max-width: 640px) {
+  .auth-fade {
+    animation-duration: 0.35s;
+  }
+
+  .blob {
+    filter: blur(30px);
+    opacity: 0.35;
+  }
+}
