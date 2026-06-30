@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import hospitalLogo from '../assets/hospital.svg'
 import appointment from '../assets/appointment.svg'
 import doctors from '../assets/doctor.svg'
@@ -6,18 +6,26 @@ import patients from '../assets/patient.svg'
 import specializations from '../assets/specialization.svg'
 import Billing from '../assets/billing.svg'
 import settings from '../assets/settings.svg'
+import { useNavigate } from "react-router-dom";
 
 const menuItems = [
-  { label: 'Dashboard', icon: hospitalLogo, alt: 'Dashboard' },
-  { label: 'Appointments', icon: appointment, alt: 'Appointments' },
-  { label: 'Doctors', icon: doctors, alt: 'Doctors' },
-  { label: 'Patients', icon: patients, alt: 'Patients' },
-  { label: 'Specializations', icon: specializations, alt: 'Specializations' },
-  { label: 'Billing', icon: Billing, alt: 'Billing' },
-  { label: 'Settings', icon: settings, alt: 'Settings' },
+  { label: 'Dashboard', icon: hospitalLogo, alt: 'Dashboard' ,route : '/dashboard'},
+  { label: 'Appointments', icon: appointment, alt: 'Appointments' ,route : '/appointments'},
+  { label: 'Doctors', icon: doctors, alt: 'Doctors' ,route : '/doctors'},
+  { label: 'Patients', icon: patients, alt: 'Patients' ,route : '/patients'},
+  { label: 'Specializations', icon: specializations, alt: 'Specializations' ,route : '/specializations'},
+  { label: 'Billing', icon: Billing, alt: 'Billing' ,route : '/billing'},
+  { label: 'Settings', icon: settings, alt: 'Settings' ,route : '/settings'},
 ]
 
 function Navbar() {
+
+  const navigate = useNavigate();
+
+  const handleNavigation = (label) => {
+    navigate(`${label}`);
+  }
+
   return (
     <div className="h-screen p-4">
       <div className="flex h-full flex-col bg-white px-4 py-6 shadow-sm">
@@ -36,6 +44,7 @@ function Navbar() {
             {menuItems.map((item) => (
               <li key={item.label}>
                 <button
+                  onClick={() => handleNavigation(item.route)}
                   type="button"
                   className="flex w-full items-center justify-start gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-medium text-slate-600 transition duration-200 hover:bg-sky-50 hover:text-sky-700"
                 >
